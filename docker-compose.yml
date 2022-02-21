@@ -1,0 +1,54 @@
+version: "3.5"
+networks:
+ apollo:
+  external:
+    name: apollo
+ mysql:
+   external:
+    name: mysql
+
+services:
+  apollo-configservice:
+   image: apolloconfig/apollo-configservice
+   restart: always
+   deploy:
+    replicas: 1
+   ports:
+     - 8080:8080
+   networks:
+    - apollo
+    - mysql
+   environment:
+    - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/ApolloConfigDB?characterEncoding=utf8
+    - SPRING_DATASOURCE_USERNAME=root
+    - SPRING_DATASOURCE_PASSWORD=123456
+  apollo-adminservice:
+   image: apolloconfig/apollo-adminservice
+   restart: always
+   deploy:
+    replicas: 1
+   ports:
+     - 8090:8090
+   networks:
+    - apollo
+    - mysql
+   environment:
+    - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/ApolloConfigDB?characterEncoding=utf8
+    - SPRING_DATASOURCE_USERNAME=root
+    - SPRING_DATASOURCE_PASSWORD=123456
+  apollo-portal:
+   image: apolloconfig/apollo-portal
+   restart: always
+   deploy:
+    replicas: 1
+   ports:
+     - 8070:8070
+   networks:
+    - apollo
+    - mysql
+   environment:
+    - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/ApolloPortalDB?characterEncoding=utf8
+    - SPRING_DATASOURCE_USERNAME=root
+    - SPRING_DATASOURCE_PASSWORD=123456
+    #- APOLLO_PORTAL_ENVS=dev
+    #- DEV_META=http://192.168.30.131:8080
