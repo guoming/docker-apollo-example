@@ -17,4 +17,4 @@ docker-compose up -d
 ```
 
 ## 3、访问
-http://localhost:16686
+http://localhost:8080
