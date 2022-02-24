@@ -12,7 +12,11 @@ services:
    image: apolloconfig/apollo-configservice
    restart: always
    deploy:
-    replicas: 1
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: "256M"
    ports:
      - 8080:8080
    networks:
@@ -26,7 +30,11 @@ services:
    image: apolloconfig/apollo-adminservice
    restart: always
    deploy:
-    replicas: 1
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: "256M"
    ports:
      - 8090:8090
    networks:
@@ -40,7 +48,11 @@ services:
    image: apolloconfig/apollo-portal
    restart: always
    deploy:
-    replicas: 1
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: "256M"
    ports:
      - 8070:8070
    networks:
