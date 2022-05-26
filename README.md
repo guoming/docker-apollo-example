@@ -16,7 +16,7 @@ docker network create apollo
 docker-compose up -d
 ```
 
-## 3、访问
+## 3、访问(账号:apollo 密码:admin)
 http://localhost:8070
 http://localhost:8080
 http://localhost:8090

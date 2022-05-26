@@ -63,4 +63,4 @@ services:
     - SPRING_DATASOURCE_USERNAME=root
     - SPRING_DATASOURCE_PASSWORD=123456
     #- APOLLO_PORTAL_ENVS=dev
-    #- DEV_META=http://192.168.30.131:8080
+    - DEV_META=http://apollo-configservice:8080
